@@ -1,22 +1,25 @@
-import React,{Component} from 'react';
-import {createStackNavigator} from 'react-navigation';
-import {Image} from 'react-native';
-import axios from 'axios';
+import React, { Component } from 'react';
+import { Image } from 'react-native';
 import cat_catalog from '../img/cat_catalog.jpg';
-import cat_icon from '../img/cat_icon.png';
+import cat_icon from "../img/cat_icon.png";
 import dog_catalog from '../img/dog_catalog.jpg';
 import dog_icon from '../img/dog_icon.png';
-import { Container, Header, Content, Footer, FooterTab, Button, Icon, Text, Left, Right, Card, CardItem, Thumbnail, Body } from 'native-base';
+import { Container, Content, Button, Icon, Text, Left, Card, CardItem, Thumbnail, Body, Title, Header } from 'native-base';
 
-class Photos extends Component  {
-  constructor(props){
+class Photos extends Component {
+  constructor(props) {
     super(props);
-    this.state={ pets:[], showPets: false, petName: '' }
-    
   }
   render() {
-        return(
-          <Container>
+    return (
+      <Container>
+        <Header>
+          <Body>
+            <Title>
+              Список
+          </Title>
+          </Body>
+        </Header>
         <Content>
           <Card>
             <CardItem>
@@ -29,11 +32,12 @@ class Photos extends Component  {
               </Left>
             </CardItem>
             <CardItem cardBody>
-              <Image source={cat_catalog} style={{height: 200, width: null, flex: 1}}/>
+              <Image source={cat_catalog} style={{ height: 200, width: null, flex: 1 }} />
             </CardItem>
             <CardItem>
               <Left>
-                <Button transparent onPress={()=>{this.props.navigation.navigate('Details')}}>
+                <Button
+                  onPress={() => this.props.navigation.navigate('Кошки')}>
                   <Icon active name="chatbubbles" />
                   <Text>Показать каталог</Text>
                 </Button>
@@ -52,22 +56,23 @@ class Photos extends Component  {
               </Left>
             </CardItem>
             <CardItem cardBody>
-              <Image source={dog_catalog} style={{height: 200, width: null, flex: 1}}/>
+              <Image source={dog_catalog} style={{ height: 200, width: null, flex: 1 }} />
             </CardItem>
             <CardItem>
               <Left>
-                <Button transparent onPress={()=>{this.props.navigation.navigate('DetailsDog')}}>
+                <Button
+                  onPress={() => this.props.navigation.navigate('Собаки')}>
                   <Icon active name="chatbubbles" />
                   <Text>Показать каталог</Text>
                 </Button>
               </Left>
             </CardItem>
           </Card>
-          </Content>
-        </Container>
-        );
-      }
-    }
-  
+        </Content>
+      </Container>
+    );
+  }
+}
+
 
 export default Photos;
